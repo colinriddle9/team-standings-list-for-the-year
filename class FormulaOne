@@ -1,0 +1,126 @@
+import java.util.*;
+/**
+ * Write a description of class F1TeamStandings2019 here.
+ * 
+ * @author Colin Riddle 
+ * @version 7/5/20
+ */
+public class FormulaOne
+{
+   private Map<String, Set<Integer>> F1Team;
+
+   
+   /**
+    * Constructor for objects of class FormulaOne.
+    */
+   public FormulaOne()
+   {
+      this.F1Team = new HashMap<String, Set<Integer>>();
+   }
+   
+   /**
+    * Populates the map with some test data.
+    */
+   public void populate()
+   {
+      Set<Integer> points = new HashSet<Integer>();
+      points.add(25);
+      points.add(12);
+      points.add(18);
+      F1Team.put("Ferrari", points);
+      
+      points = new HashSet<>();
+      points.add(18);
+      points.add(25);
+      points.add(10);
+      F1Team.put("Mercedes", points);
+      
+      points = new HashSet<>();
+      points.add(8);
+      points.add(4);
+      points.add(2);
+      F1Team.put("Mclaren", points);      
+   }
+   
+   /**
+    * Prints out a meaningful representation of each key in the map. 
+    */
+   public void printMap()
+   {
+      for (String Team : F1Team.keySet())
+      {
+         System.out.print("F1Team: " + Team + ", Constructors' points: ");
+         for (Integer points : F1Team.get(Team))
+         {
+            System.out.print("" + points + ", ");
+         }
+         System.out.println();
+      }
+   }
+   
+   /**
+    * Prints a meaningful textual representation of a key 
+    * otherwise announcing that the key is not present.
+    */
+   public void printMapValue(int key)
+   {
+      if (F1Team.containsKey(key))
+      {
+         System.out.print("F1Team: " + key + ", Constuctors' points: ");
+         for (Integer points : F1Team.get(key))
+         {
+            System.out.print("" + points + ", ");
+         }
+      }
+      else
+      {
+         System.out.println("The key " + key + " is not present. ");
+      }
+   }
+   
+   /**
+    * Adds the key and value to the map.
+    * If the key is already present the existing value is overwritten.
+    */
+   public void addMapEntry(String key,Set<Integer> points)
+   {
+      F1Team.put(key, points);
+   }
+   
+   /**
+    * If the key given as argument exists,
+    * deletes the key-value pair from the map and returns true
+    * otherwise false.
+    */
+   public boolean deleteEntry(String key)
+   {
+      if (F1Team.containsKey(key))
+      {
+         F1Team.remove(key);
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
+   
+   /**
+    * Adds a new element to the collection of elements for a particular key
+    */
+   public void addToValue(String key, int points)
+   {
+      F1Team.get(key).add(points);
+   }
+   
+   /**
+    * Deletes a particular element from the collection of elements for a particular key.
+    */
+   public void deleteFromValue(String key, int points)
+   {
+      F1Team.get(key).remove(points);
+   }
+   
+      
+
+}
